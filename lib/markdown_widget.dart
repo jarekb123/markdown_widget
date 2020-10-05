@@ -1,4 +1,6 @@
 import 'dart:collection';
+import 'package:markdown/markdown.dart';
+
 import 'markdown_toc.dart';
 import 'markdown_generator.dart';
 import 'config/style_config.dart';
@@ -44,6 +46,9 @@ class MarkdownWidget extends StatefulWidget {
   /// [ListView] padding
   final EdgeInsetsGeometry padding;
 
+  /// Markdown [ExtensionSet]. If not set - ExtensionSet.githubFlavored is used
+  final ExtensionSet extensionSet;
+
   const MarkdownWidget({
     Key key,
     @required this.data,
@@ -57,6 +62,7 @@ class MarkdownWidget extends StatefulWidget {
     this.physics,
     this.shrinkWrap = false,
     this.padding,
+    this.extensionSet,
   }) : super(key: key);
 
   @override
@@ -111,6 +117,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget> {
       widgetConfig: widget.widgetConfig,
       styleConfig: widget.styleConfig,
       childMargin: widget.childMargin,
+      extensionSet: widget.extensionSet ?? ExtensionSet.gitHubFlavored,
     );
     tocList.addAll(markdownGenerator.tocList);
     widgets.addAll(markdownGenerator.widgets);
@@ -211,9 +218,11 @@ class _MarkdownData {
   final WidgetConfig widgetConfig;
   final StyleConfig styleConfig;
   final EdgeInsetsGeometry childMargin;
+  final ExtensionSet extensionSet;
 
+  // Default extensionSet is githubFlavored 
   _MarkdownData(
-      {this.data, this.widgetConfig, this.styleConfig, this.childMargin});
+      {this.data, this.widgetConfig, this.styleConfig, this.childMargin, this.extensionSet});
 }
 
 MarkdownGenerator buildMarkdownGenerator(_MarkdownData markdownData) {

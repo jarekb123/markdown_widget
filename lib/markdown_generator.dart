@@ -15,9 +15,10 @@ class MarkdownGenerator {
     WidgetConfig widgetConfig,
     StyleConfig styleConfig,
     EdgeInsetsGeometry childMargin,
+    m.ExtensionSet extensionSet
   }) {
     final m.Document document = m.Document(
-        extensionSet: m.ExtensionSet.gitHubFlavored,
+        extensionSet: extensionSet ?? m.ExtensionSet.gitHubFlavored,
         encodeHtml: false,
         inlineSyntaxes: [TaskListSyntax()]);
     final List<String> lines = data.split(RegExp(r'\r?\n'));

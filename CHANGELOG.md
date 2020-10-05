@@ -1,3 +1,5 @@
+#### [1.2.2] - add `extensionSet` to set markdown extension set
+
 #### [1.2.1+2] - add `padding` property to `MarkdownWidget` (thanks to @[jarekb123](https://github.com/jarekb123)). It adds ability to set custom padding of under-the-hood scrollable view.
 
 #### [1.2.1+1] - expose `tocList` and `currentToc` properties in `TocController` (thanks to @[jarekb123](https://github.com/jarekb123)). It adds ability to create custom Table of Content widgets
