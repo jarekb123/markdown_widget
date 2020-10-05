@@ -97,6 +97,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget> {
       widgetConfig: widget.widgetConfig,
       styleConfig: widget.styleConfig,
       childMargin: widget.childMargin,
+      extensionSet: widget.extensionSet ?? ExtensionSet.gitHubFlavored,
     );
 
     ///use a new isolate to create [MarkdownGenerator]
@@ -224,9 +225,13 @@ class _MarkdownData {
   final EdgeInsetsGeometry childMargin;
   final ExtensionSet extensionSet;
 
-  // Default extensionSet is githubFlavored 
+  // Default extensionSet is githubFlavored
   _MarkdownData(
-      {this.data, this.widgetConfig, this.styleConfig, this.childMargin, this.extensionSet});
+      {this.data,
+      this.widgetConfig,
+      this.styleConfig,
+      this.childMargin,
+      this.extensionSet});
 }
 
 MarkdownGenerator buildMarkdownGenerator(_MarkdownData markdownData) {
@@ -235,5 +240,6 @@ MarkdownGenerator buildMarkdownGenerator(_MarkdownData markdownData) {
     widgetConfig: markdownData.widgetConfig,
     styleConfig: markdownData.styleConfig,
     childMargin: markdownData.childMargin,
+    extensionSet: markdownData.extensionSet,
   );
 }
